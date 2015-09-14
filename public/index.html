@@ -3,13 +3,36 @@
 <head>
 	<meta charset="UTF-8">
 	<title>My App</title>
-	<script src="/js/main.js"></script>
 
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 	<div ng-controller="MainController">
-		<h1>{{ message }}</h1>
+		<div class="container">
+			<div class="city-list">
+				<div ng-repeat="city in cities" ng-style="cityStyle" class="wrap" ng-class="city.status">
+					<div class="inner">
+						<span class="name" ng-bind="city.name"></span>
+						<span class="key" ng-bind="city.name[0]"></span>
+						<span class="temperature" ng-bind="city.weather.params.temp + 'C'"></span>
+						<span class="main">
+							<img ng-src="http://openweathermap.org/img/w/{{city.weather.base.icon}}.png" ng-alt="{{city.weather.base.main}}">
+							<span ng-bind="city.weather.base.main"></span>
+						</span>
+					</div>
+				</div>
+				<!--<cityCard ng-repeat="city in cities" city="city" cityStyle="cityStyle"></cityCard>-->
+			</div>
+			<div class="add-city">
+				<div class="form">
+					<googleplace options="acOptions" on-chose="acCallback(place)"></googleplace>
+					<a href class="btn">+</a>
+				</div>
+			</div>
+		</div>
 	</div>
+
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+	<script src="/js/main.js"></script>
 </body>
 </html>

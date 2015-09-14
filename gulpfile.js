@@ -9,7 +9,7 @@ gulp.task('connect', function () {
 		root: 'public',
 		port: 4000
 	})
-})
+});
 
 gulp.task('browserify', function() {
 	// Grabs the app.js file
@@ -19,16 +19,22 @@ gulp.task('browserify', function() {
         .pipe(source('main.js'))
         // saves it the public/js/ directory
         .pipe(gulp.dest('./public/js/'));
-})
+});
 
 gulp.task('sass', function() {
 	return sass('sass/style.sass')
 		.pipe(gulp.dest('public/css'))
-})
+});
+
+gulp.task('templates', function () {
+	gulp.src('./app/templates/*.html')
+		.pipe(gulp.dest('public/templates/'));
+});
 
 gulp.task('watch', function() {
-	gulp.watch('app/**/*.js', ['browserify'])
-	gulp.watch('sass/style.sass', ['sass'])
-})
+	gulp.watch('app/**/*.js', ['browserify']);
+	gulp.watch('app/templates/*.html', ['templates']);
+	gulp.watch('sass/style.sass', ['sass']);
+});
 
-gulp.task('default', ['connect', 'watch'])
+gulp.task('default', ['connect', 'watch']);

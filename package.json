@@ -1,12 +1,13 @@
 {
-  "name": "angular_browserify_gulp",
+  "name": "weather-app",
+  "repository": "https://github.com/nilagor/weather-app.git",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A little test work",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Omar Fouad <me@omarfouad.com> (http://omarfouad.com/)",
+  "author": "Rogalin V. <rogalin.v@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "browserify": "^9.0.3",
@@ -16,6 +17,8 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "angular": "^1.3.15"
+    "angular": "^1.3.15",
+    "angular-resource": "*",
+    "google-maps": "*"
   }
 }
