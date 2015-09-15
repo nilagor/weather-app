@@ -5,17 +5,12 @@
 
 module.exports = function ($scope, City, _) {
     $scope.cities = [];
-    $scope.cityStyle = {
-        width: '100%'
-    }
-    $scope.acOptions = {
-        types: ['(cities)']
-    };
 
-    $scope.acCallback = function (place) {
-        var newCity = new City(place.name);
+    $scope.addPlace = function (place) {
+        var newCity = new City(place.name, $scope.refreshInterval);
         newCity.onResolve = function () {
             if ($scope.cities.length === 5) {
+                $scope.cities[0].stopUpdate();
                 $scope.cities.shift();
             }
             $scope.cities.push(newCity);
@@ -25,15 +20,8 @@ module.exports = function ($scope, City, _) {
         };
     };
 
-    $scope.removeCity = function (removableCity) {
-        removableCity.stopUpdate();
-        $scope.cities = _.reject($scope.cities, function (city) {
-            return city.id === removableCity.id;
-        });
+    $scope.removeCity = function (city) {
+        city.stopUpdate();
+        $scope.cities = _.reject($scope.cities, {id: city.id})
     };
-
-    $scope.$watch('cities', function (val) {
-        if (!val || val.length === 0) return;
-        $scope.cityStyle.width = 100 / $scope.cities.length + '%';
-    }, true);
 };

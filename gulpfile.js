@@ -1,8 +1,8 @@
-var gulp = require('gulp')
-var sass = require('gulp-ruby-sass')
-var connect = require('gulp-connect')
-var browserify = require('browserify')
-var source = require('vinyl-source-stream')
+var gulp = require('gulp');
+var sass = require('gulp-ruby-sass');
+var connect = require('gulp-connect');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
 
 gulp.task('connect', function () {
 	connect.server({
@@ -37,4 +37,4 @@ gulp.task('watch', function() {
 	gulp.watch('sass/style.sass', ['sass']);
 });
 
-gulp.task('default', ['connect', 'browserify', 'watch']);
+gulp.task('default', ['connect', 'browserify', 'templates', 'sass', 'watch']);

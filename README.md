@@ -8,7 +8,9 @@ This is a little test work
 ## Installation
 
        git clone git@github.com:nilagor/weather-app.git
-
+       
+       cd ./weather-app
+       
        npm install
 
        gulp

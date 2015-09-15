@@ -9,13 +9,19 @@
 <div ng-controller="MainController">
     <div class="container">
         <div class="city-list">
-            <city-card ng-repeat="city in cities" city="city" city-style="cityStyle" on-remove="removeCity(city)"></city-card>
+            <city-card ng-repeat="city in cities" city="city" on-remove="removeCity(city)"></city-card>
         </div>
         <div class="add-city">
             <div class="form">
-                <google-place options="acOptions" on-chose="acCallback(place)"></google-place>
+                <google-place types="(cities)" on-choose="addPlace(place)"></google-place>
                 <a href class="btn">+</a>
             </div>
+            <select ng-model="refreshInterval">
+                <option value=''>Auto-refresh interval</option>
+                <option value="5">5 sec</option>
+                <option value="10">10 sec</option>
+                <option value="15">15 sec</option>
+            </select>
         </div>
     </div>
 </div>

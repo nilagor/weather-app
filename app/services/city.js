@@ -5,14 +5,15 @@
 module.exports = function (Weather) {
 
     /**
-     * Interval for auto refresh weather information (seconds)
+     * Default interval for auto refresh weather information (seconds)
      * @type {number}
      */
-    var autoUpdateInterval = 5;
+    var defaultInterval = 5;
 
-    function City(name) {
+    function City(name, interval) {
         var self = this;
         self.name = name || self.name;
+        self.interval = parseInt(interval) || defaultInterval;
         self.id = name + ((new Date).getTime() / 1000 | 0); // almost guid
         if (name === undefined) return;
         self.update().then(function () {
@@ -60,7 +61,7 @@ module.exports = function (Weather) {
         };
         self.autoUpdate = setTimeout(function () {
             self.update.call(self);
-        }, autoUpdateInterval * 1000);
+        }, self.interval * 1000);
     };
 
     /**

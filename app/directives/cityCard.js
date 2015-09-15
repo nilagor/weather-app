@@ -9,9 +9,8 @@ module.exports = function() {
       replace: true,
       scope: {
           city: '=',
-          cityStyle: '=',
           onRemove: '&'
       },
-      templateUrl: '/templates/city-card.tpl.html',
+      templateUrl: '/templates/city-card.tpl.html'
   }
 };

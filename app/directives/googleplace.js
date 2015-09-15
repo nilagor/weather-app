@@ -7,15 +7,20 @@ module.exports = function () {
         restrict: 'E',
         scope: {
             options: '=',
-            onChose: '&'
+            types: '@',
+            onChoose: '&'
         },
         template: '<input type="text">',
         link: function (scope, element) {
             var input = element[0].querySelector('input');
-            scope.gPlace = new google.maps.places.Autocomplete(input, scope.options);
+            var options = angular.extend({
+                types: scope.types.split(",") || ['(cities)']
+            }, scope.options);
+
+            scope.gPlace = new google.maps.places.Autocomplete(input, options);
 
             google.maps.event.addListener(scope.gPlace, 'place_changed', function () {
-                scope.onChose({place: scope.gPlace.getPlace()});
+                scope.onChoose({place: scope.gPlace.getPlace()});
                 input.value = '';
             });
         }
