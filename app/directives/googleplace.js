@@ -1,5 +1,6 @@
 /**
- * Created by vrog on 14.09.2015.
+ * Created by nilagor on 14.09.2015.
+ * Directive for input with Google Places Autocomplete
  */
 module.exports = function () {
     return {
@@ -11,12 +12,8 @@ module.exports = function () {
         template: '<input type="text">',
         link: function (scope, element) {
             var input = element[0].querySelector('input');
-            angular.extend({
-                types: [],
-                componentRestrictions: {}
-            }, scope.options);
-
             scope.gPlace = new google.maps.places.Autocomplete(input, scope.options);
+
             google.maps.event.addListener(scope.gPlace, 'place_changed', function () {
                 scope.onChose({place: scope.gPlace.getPlace()});
                 input.value = '';

@@ -1,9 +1,9 @@
-## What is this?
+# What is this?
 This is a little test work
 
 ## What is inside?
 
-AngularJs + Gulp + Browserify
+**AngularJs** + **Gulp** + **Browserify**
 
 ## Installation
 

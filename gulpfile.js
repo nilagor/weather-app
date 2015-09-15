@@ -37,4 +37,4 @@ gulp.task('watch', function() {
 	gulp.watch('sass/style.sass', ['sass']);
 });
 
-gulp.task('default', ['connect', 'watch']);
+gulp.task('default', ['connect', 'browserify', 'watch']);

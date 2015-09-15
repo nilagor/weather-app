@@ -1,0 +1,13 @@
+<div ng-style="cityStyle" class="wrap" ng-class="city.status">
+    <div class="inner">
+        <span class="name" ng-bind="city.name"></span>
+        <span class="key" ng-bind="city.name[0]"></span>
+        <span class="temperature" ng-bind="city.weather.params.temp + 'C'"></span>
+        <span class="main">
+            <img ng-src="http://openweathermap.org/img/w/{{city.weather.base.icon}}.png"
+                 alt="{{city.weather.base.main}}">
+            <span ng-bind="city.weather.base.main"></span>
+        </span>
+        <a href ng-click="onRemove({city: city})" class="remove-link" title="Remove city">X</a>
+    </div>
+</div>

@@ -1,38 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
 <head>
-	<meta charset="UTF-8">
-	<title>My App</title>
-
-	<link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-	<div ng-controller="MainController">
-		<div class="container">
-			<div class="city-list">
-				<div ng-repeat="city in cities" ng-style="cityStyle" class="wrap" ng-class="city.status">
-					<div class="inner">
-						<span class="name" ng-bind="city.name"></span>
-						<span class="key" ng-bind="city.name[0]"></span>
-						<span class="temperature" ng-bind="city.weather.params.temp + 'C'"></span>
-						<span class="main">
-							<img ng-src="http://openweathermap.org/img/w/{{city.weather.base.icon}}.png" ng-alt="{{city.weather.base.main}}">
-							<span ng-bind="city.weather.base.main"></span>
-						</span>
-					</div>
-				</div>
-				<!--<cityCard ng-repeat="city in cities" city="city" cityStyle="cityStyle"></cityCard>-->
-			</div>
-			<div class="add-city">
-				<div class="form">
-					<googleplace options="acOptions" on-chose="acCallback(place)"></googleplace>
-					<a href class="btn">+</a>
-				</div>
-			</div>
-		</div>
-	</div>
+<div ng-controller="MainController">
+    <div class="container">
+        <div class="city-list">
+            <city-card ng-repeat="city in cities" city="city" city-style="cityStyle" on-remove="removeCity(city)"></city-card>
+        </div>
+        <div class="add-city">
+            <div class="form">
+                <google-place options="acOptions" on-chose="acCallback(place)"></google-place>
+                <a href class="btn">+</a>
+            </div>
+        </div>
+    </div>
+</div>
 
-	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
-	<script src="/js/main.js"></script>
+<script type="text/javascript"
+        src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&language=en"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>

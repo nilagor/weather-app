@@ -1,8 +1,7 @@
 /**
- * Created by vrog on 14.09.2015.
+ * Created by nilagor on 14.09.2015.
+ * Directive for city card
  */
-
-var template = require('../templates/cityCard.html');
 
 module.exports = function() {
   return {
@@ -10,11 +9,9 @@ module.exports = function() {
       replace: true,
       scope: {
           city: '=',
-          cityStyle: '='
+          cityStyle: '=',
+          onRemove: '&'
       },
-      template: template,
-      link: function($scope) {
-
-      }
+      templateUrl: '/templates/city-card.tpl.html',
   }
 };
